@@ -1,4 +1,4 @@
-FROM ruby:3.4-alpine
+FROM ruby:4.0.6-alpine
 
 ENV TZ="Etc/UTC"
 
@@ -18,4 +18,4 @@ COPY . .
 
 RUN bundle install
 
-CMD ["bundle", "exec", "ruby", "--yjit", "core.rb"]
+CMD ["bundle", "exec", "ruby", "core.rb"]
