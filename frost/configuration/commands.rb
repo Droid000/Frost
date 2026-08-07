@@ -4,40 +4,40 @@ module Frost::Commands
   # Register all of the application commands for the bot.
   def self.register_application_commands(bot)
     # @!function [General Operations] Belongs to a module that manages general information.
-    bot.register_application_command(:info, "View information about the bot.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "सेटिंग्स" }, description_localizations: { hi: "आपना सर्वर कॉन्फिग्रेशन देखो" })
+    bot.register_application_command(:info, "View information about the bot.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "सेटिंग्स" }, description_localizations: { hi: "आपना सर्वर कॉन्फिग्रेशन देखो" })
 
     # @!function [Affections] Belongs to a module that does expressions.
-    bot.register_application_command(:hug, "Hug another user.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "गलेमिलना" }, description_localizations: { hi: "सर्वर मित्र के गले मिलना" }) do |option|
+    bot.register_application_command(:hug, "Hug another user.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "गलेमिलना" }, description_localizations: { hi: "सर्वर मित्र के गले मिलना" }) do |option|
       option.user(:target, "Who do you want to hug?", required: true, name_localizations: { hi: "इशारालगाना" }, description_localizations: { hi: "किसको गले मिलना है" })
     end
 
     # @!function [Affections] Belongs to a module that does expressions.
-    bot.register_application_command(:poke, "Poke another user.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "बुलाना" }, description_localizations: { hi: "कोई सर्वर मित्र को बुलाना" }) do |option|
+    bot.register_application_command(:poke, "Poke another user.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "बुलाना" }, description_localizations: { hi: "कोई सर्वर मित्र को बुलाना" }) do |option|
       option.user(:target, "Who do you want to poke?", required: true, name_localizations: { hi: "इशारालगाना" }, description_localizations: { hi: "किसको बुलाना है" })
     end
 
     # @!function [Affections] Belongs to a module that does expressions.
-    bot.register_application_command(:nom, "Nom another user.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "कुतरना" }, description_localizations: { hi: "किसी अन्य सर्वर सदस्य को काटता है" }) do |option|
+    bot.register_application_command(:nom, "Nom another user.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "कुतरना" }, description_localizations: { hi: "किसी अन्य सर्वर सदस्य को काटता है" }) do |option|
       option.user(:target, "Who do you want to nom?", required: true, name_localizations: { hi: "इशारालगाना" }, description_localizations: { hi: "आप किसे काटना चाहते हैं?" })
     end
 
     # @!function [Affections] Belongs to a module that does expressions.
-    bot.register_application_command(:angered, "Show your anger towards another user.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "गुस्साकरना" }, description_localizations: { hi: "कोई सर्वर मित्र पे गुस्सा दिखाना" }) do |option|
+    bot.register_application_command(:angered, "Show your anger towards another user.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "गुस्साकरना" }, description_localizations: { hi: "कोई सर्वर मित्र पे गुस्सा दिखाना" }) do |option|
       option.user(:target, "Who are you mad at?", required: true, name_localizations: { hi: "इशारालगाना" }, description_localizations: { hi: "किसपे आपको गुस्सा दिखाना है" })
     end
 
     # @!function [Affections] Belongs to a module that does expressions.
-    bot.register_application_command(:bonk, "Bonk another user.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "टपलीमारना" }, description_localizations: { hi: "किसी सर्वर मित्र को टपाली मारना" }) do |option|
+    bot.register_application_command(:bonk, "Bonk another user.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "टपलीमारना" }, description_localizations: { hi: "किसी सर्वर मित्र को टपाली मारना" }) do |option|
       option.user(:target, "Who do you want to bonk?", required: true, name_localizations: { hi: "इशारालगाना" }, description_localizations: { hi: "किसको टपाली मारना है" })
     end
 
     # @!function [Affections] Belongs to a module that does expressions.
-    bot.register_application_command(:punch, "Punch another user.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "मुक्का" }, description_localizations: { hi: "एक सर्वर मित्र को मुक्का मारो" }) do |option|
+    bot.register_application_command(:punch, "Punch another user.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "मुक्का" }, description_localizations: { hi: "एक सर्वर मित्र को मुक्का मारो" }) do |option|
       option.user(:target, "Who do you want to punch?", required: true, name_localizations: { hi: "इशारालगाना" }, description_localizations: { hi: "आप किसे मुक्का मारना चाहते हैं?" })
     end
 
     # @!function [General Operations] Belongs to a module that manages general information.
-    bot.register_application_command(:time, "View the current time.", contexts: [0, 1, 2], integration_types: [0, 1], name_localizations: { hi: "समय" }, description_localizations: { hi: "वर्तमान समय देखें" }) do |option|
+    bot.register_application_command(:time, "View the current time.", contexts: %i[guild bot_dm private_channel], integration_types: %i[user guild], name_localizations: { hi: "समय" }, description_localizations: { hi: "वर्तमान समय देखें" }) do |option|
       option.string(:timezone, "The timezone to view the time in.", required: true, autocomplete: true, name_localizations: { hi: "समयक्षेत्र" }, description_localizations: { hi: "आप किस समयक्षेत्र का समय देखना चाहते हैं" })
     end
 
@@ -49,7 +49,7 @@ module Frost::Commands
     end
 
     # @!function [Event Operations] Belongs to a module that manages event roles.
-    bot.register_application_command(:event, "Role management for server events.", contexts: [0], integration_types: [0]) do |command|
+    bot.register_application_command(:event, "Role management for server events.", contexts: [:guild], integration_types: [:guild]) do |command|
       command.subcommand_group(:role, "Event Roles") do |group|
         group.subcommand(:remove, "Remove one of your event roles.") do |option|
           option.role(:role, "The event role that you want to remove.", required: true)
@@ -63,19 +63,11 @@ module Frost::Commands
           option.role(:role, "The event role that you want to equip.", required: true)
           option.boolean(:display, "whether to set the event role as your primary role.", required: true)
         end
-
-        group.subcommand(:enable, "Enable the event roles functionality for a role.") do |option|
-          option.role(:role, "The role to enable the event roles functionality for.", required: true)
-        end
-
-        group.subcommand(:disable, "Disable the event roles functionality for an event role.") do |option|
-          option.role(:role, "The role to disable the event roles functionality for.", required: true)
-        end
       end
     end
 
     # @!function [Birthday Operations] Belongs to a module that manages birthday roles.
-    bot.register_application_command(:birthday, "Customizable birthday roles and announcements.", contexts: [0], integration_types: [0]) do |command|
+    bot.register_application_command(:birthday, "Customizable birthday roles and announcements.", contexts: [:guild], integration_types: [:guild]) do |command|
       command.subcommand(:add, "Add or edit your date of birth.") do |option|
         option.integer(:month, "The month you were born in.", required: true, choices: { January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12 })
         option.integer(:day, "The day you were born on.", required: true, min_value: 1, max_value: 31)
@@ -97,7 +89,7 @@ module Frost::Commands
     end
 
     # @!function [Booster Operations] Belongs to a module that manages booster roles.
-    bot.register_application_command(:booster, "Customizable perks for server boosters.", contexts: [0], integration_types: [0]) do |command|
+    bot.register_application_command(:booster, "Customizable perks for server boosters.", contexts: [:guild], integration_types: [:guild]) do |command|
       command.subcommand_group(:role, "Booster Perks") do |group|
         group.subcommand(:claim, "Claim your custom booster role.") do |option|
           option.string(:name, "Provide a name for your role.", required: true, max_length: 100)

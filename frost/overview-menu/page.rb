@@ -15,7 +15,7 @@ module Frost::Overview
 
         container.separator(divider: true, spacing: :small)
 
-        owner = event.user == FROST_CONFIG[:Discord][:OWNER]&.to_i
+        owner = event.user.resolve_id == BOT.config.owner_id
 
         owner ? owner_menu(container, event) : basic_menu(container, event)
       end

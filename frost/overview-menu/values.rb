@@ -75,9 +75,9 @@ module Frost::Overview
   def self.overview_text(bot)
     statistics = format(
       ELEMENTS[:statistics],
-      Utilities.delimit(bot.guilds.size),
-      Utilities.delimit(bot.guilds.sum { |_, guild| guild.member_count }),
-      Utilities.delimit(bot.guilds.sum { |_, guild| guild.channels.size })
+      Frost::Utilities.delimit(bot.guilds.size),
+      Frost::Utilities.delimit(bot.guilds.sum { |_, guild| guild.member_count }),
+      Frost::Utilities.delimit(bot.guilds.sum { |_, guild| guild.channels.size })
     )
 
     "#{ELEMENTS[:main_menu_greeting]}\n\n#{statistics}"

@@ -1,19 +1,18 @@
 -- Revision: V4
 -- Creation Time: 2025-01-02 12:31:07.804358 UTC
 
--- Holds info about event roles.
-CREATE TABLE IF NOT EXISTS event_roles (
-  guild_id BIGINT NOT NULL,
-  setup_by BIGINT NOT NULL,
-  setup_at BIGINT NOT NULL,
-  role_id BIGINT PRIMARY KEY
-);
-
 -- Holds info about event users.
 CREATE TABLE IF NOT EXISTS event_users (
   user_id BIGINT NOT NULL,
   role_id BIGINT NOT NULL,
   PRIMARY KEY (user_id, role_id)
+);
+
+-- Holds info about event roles.
+CREATE TABLE IF NOT EXISTS event_roles (
+  guild_id BIGINT NOT NULL,
+  role_id BIGINT PRIMARY KEY,
+  enabled BOOLEAN DEFAULT TRUE,
 );
 
 -- Holds info about server boosters.
@@ -42,6 +41,14 @@ CREATE TABLE IF NOT EXISTS world_timezones (
   identifier TEXT NOT NULL
 );
 
+-- Holds info about member birthdays.
+CREATE TABLE IF NOT EXISTS user_birthdays (
+  guilds BIGINT[] NOT NULL,
+  user_id BIGINT PRIMARY KEY,
+  pending BOOLEAN DEFAULT FALSE,
+  birthdate TIMESTAMPTZ NOT NULL
+);
+
 -- Holds info about booster settings.
 CREATE TABLE IF NOT EXISTS booster_settings (
   role_id BIGINT NOT NULL,
@@ -60,12 +67,14 @@ CREATE TABLE IF NOT EXISTS birthday_settings (
   channel_id BIGINT DEFAULT NULL
 );
 
--- Holds info about member birthdays.
-CREATE TABLE IF NOT EXISTS user_birthdays (
-  guilds BIGINT[] NOT NULL,
-  user_id BIGINT PRIMARY KEY,
-  pending BOOLEAN DEFAULT FALSE,
-  birthdate TIMESTAMPTZ NOT NULL
+-- Holds info about moderation settings.
+CREATE TABLE IF NOT EXISTS moderation_settings (
+  setup_by BIGINT NOT NULL,
+  setup_at BIGINT NOT NULL,
+  guild_id BIGINT PRIMARY KEY,
+  channel_id BIGINT DEFAULT NULL,
+  exempt_roles BIGINT[] NOT NULL,
+  timeout_seconds INTEGER DEFAULT NULL
 );
 
 -- Function for searching for a timezone.
